@@ -9,9 +9,9 @@ class UserTableModel extends Models
        $this->dbh = $dbh;
    }
 
-   public function getUsersTableData($sort, $order , $search):array{
+   public function getUsersTableData($sort, $order , $search , $domain):array{
 
-       $sql = "SELECT * FROM email WHERE CONCAT(email) LIKE '%$search%' ORDER BY $order $sort";
+       $sql = "SELECT * FROM email WHERE CONCAT(email) LIKE '%$search%' AND CONCAT(email) LIKE '%$domain%' ORDER BY $order $sort";
        $stmt = $this->dbh->connect()->prepare($sql);
        $stmt->execute([]);
 
@@ -46,7 +46,7 @@ class UserTableModel extends Models
 
         for ($i = 0; $i<count($emails); $i++) {
             $filter = explode('@', $emails[$i]['email']);
-            $domain = $filter[1];
+            $domain = '@'.$filter[1];
             array_push($domains, $domain);
             $domains[$i] = ucfirst(strtolower($domains[$i]));
         }

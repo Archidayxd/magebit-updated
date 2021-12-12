@@ -17,6 +17,7 @@
     echo $search;
     ?>">
     <button type="submit">Search</button>
+    <input type="hidden" name="domain" value="<?php echo $domain ?>">
 </form>
 <form action="/users">
     <button type="submit">Reset</button>
@@ -26,9 +27,9 @@
     <table>
         <?php
         echo
-        "<tr><th><a href='?search=$search&order=Id&sort=$sort'>Id</th>
-         <th><a href='?search=$search&order=email&sort=$sort'>Email</a></th>
-         <th><a href='?search=$search&order=time&sort=$sort'>Time</a></th>
+        "<tr><th><a href='?search=$search&order=Id&sort=$sort&?domain=$domain'>Id</th>
+         <th><a href='?search=$search&order=email&sort=$sort&?domain=$domain'>Email</a></th>
+         <th><a href='?search=$search&order=time&sort=$sort&?domain=$domain'>Time</a></th>
          <th>Delete</th></tr>";
         foreach ($emails as $key => $data) {
             echo
@@ -37,8 +38,8 @@
                 "</td><td> <a href='/users/delete?Id=$data[Id]'>Delete </a>" . "</tr>";
         }
 
-        foreach ($domains as $key => $domain){
-            echo "<a href='?search=$domains[$key]''>".$domains[$key].'</a>' ."&nbsp;";
+        foreach ($domains as $key => $value){
+            echo "<a href='?domain=$domains[$key]''>".$domains[$key].'</a>' ."&nbsp;";
         }
         ?>
     </table>

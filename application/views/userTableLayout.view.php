@@ -18,6 +18,9 @@
     ?>">
     <button type="submit">Search</button>
 </form>
+<form action="/users">
+    <button type="submit">Reset</button>
+</form>
 <form method="get" action="/users/download">
     <button type="submit">Download</button>
     <table>
@@ -32,6 +35,10 @@
                 "<tr><td><input type='checkbox' name='xport[]' value='{$data['Id']}'>" . $data["Id"] .
                 "</td><td>" . $data["email"] . "</td><td>" . $data["time"] .
                 "</td><td> <a href='/users/delete?Id=$data[Id]'>Delete </a>" . "</tr>";
+        }
+
+        foreach ($domains as $key => $domain){
+            echo "<a href='?search=$domains[$key]''>".$domains[$key].'</a>' ."&nbsp;";
         }
         ?>
     </table>

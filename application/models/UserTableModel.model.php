@@ -36,6 +36,25 @@ class UserTableModel extends Models
         foreach ($result as $i => $row) {
             fputcsv($fp, $row);
         }
-
     }
+    public  function getByDomain(){
+        $sql = "SELECT email FROM email";
+        $stmt = $this->dbh->connect()->prepare($sql);
+        $stmt->execute([]);
+        $emails = $stmt->fetchAll();
+        $domains = [];
+
+        for ($i = 0; $i<count($emails); $i++) {
+            $filter = explode('@', $emails[$i]['email']);
+            $domain = $filter[1];
+            array_push($domains, $domain);
+            $domains[$i] = ucfirst(strtolower($domains[$i]));
+        }
+
+        foreach (array_diff_assoc($domains, array_unique($domains)) as $key => $value){
+            unset($domains[$key]);
+        }
+        return $domains;
+    }
+
 }

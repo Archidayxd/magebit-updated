@@ -24,8 +24,10 @@ class UsersTableController extends Controller
         }
 
         $data = $this->model->getUsersTableData($sort, $order, $search);
+        $domains = $this->model->getByDomain();
         $data['sort'] = $sort;
         $data['search'] = $search;
+        $data['domains'] = $domains;
         $this->view->render($data);
     }
 
@@ -51,10 +53,13 @@ class UsersTableController extends Controller
         }
     }
 
+
     private function sortUserEmail()
     {
 //test
     }
+
+
 
 
 }

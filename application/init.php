@@ -23,19 +23,29 @@ $usersTableController = new UsersTableController($usersTableView, $usersTableMod
 
 
 $routes = array(
-    "/users" => function() use ($usersTableController) { $usersTableController->index(); },
-    "/users/delete" => function() use ($usersTableController) { $usersTableController->deleteEmail(); },
-    "/users/download" => function() use ($usersTableController){$usersTableController->downloadCsv();}
+    "/users" => function () use ($usersTableController) {
+        $usersTableController->index();
+    },
+    "/users/delete" => function () use ($usersTableController) {
+        $usersTableController->deleteEmail();
+    },
+    "/users/download" => function () use ($usersTableController) {
+        $usersTableController->downloadCsv();
+    },
+//    "/users/domains" => function () use ($usersTableController) {
+//        $usersTableController->sortByDomains();
+//    }
 );
 
-function route($routes){
-    foreach ($routes as $path => $view){
-        if ($path == $_SERVER["PATH_INFO"])
-        {
+function route($routes)
+{
+    foreach ($routes as $path => $view) {
+        if ($path == $_SERVER["PATH_INFO"]) {
             $view();
             return;
         }
     }
+    header('Location: /users');
 }
 
 route($routes);

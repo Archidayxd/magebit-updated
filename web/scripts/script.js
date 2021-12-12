@@ -25,7 +25,7 @@ if(emailCheck.value.match(pattern)){
     errorElement.textContent = ""
     errorElement.textContent = "Please provide a valid e-mail address"
     errorElement.style.visibility = "hidden"
-    if(/.co\s*$/.test(emailCheck.value)){
+    if(/\w+@\w+\.co$/.test(emailCheck.value)){
         form.classList.add("invalid")
         form.classList.remove("valid")
         subButton.disabled = true;

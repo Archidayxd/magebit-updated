@@ -9,12 +9,12 @@ class MainPageModel extends Models{
     }
     public function addEmailToDb($email){
         try {
-
             $sql = "INSERT INTO `email`(`email`) VALUES ('$email')";
             $this->dbh->connect()->exec($sql);
-            header('Location: /users');
+            return true;
         } catch(PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
+            return false;
         }
 
 //        $this->connect() = null;

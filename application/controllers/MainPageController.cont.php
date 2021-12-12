@@ -1,6 +1,7 @@
 <?php
 
-class MainPageController extends Controller{
+class MainPageController extends Controller
+{
 
     private MainPageView $view;
     private MainPageModel $model;
@@ -11,14 +12,19 @@ class MainPageController extends Controller{
         $this->model = $model;
     }
 
-    public function index(){
-        $this->view->render([]);
+    public function index()
+    {
+        $data['success'] = false;
+        $this->view->render($data);
     }
 
-    public function getEmail(){
-        if (isset($_POST['email'])){
+    public function postEmail()
+    {
+        if (isset($_POST['email'])) {
             $email = $_POST['email'];
-            $this->model->addEmailToDb($email);
+            $isEmailAdded = $this->model->addEmailToDb($email);
+            $data['success'] = $isEmailAdded;
+            $this->view->render($data);
         }
 
     }

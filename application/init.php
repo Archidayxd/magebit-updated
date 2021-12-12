@@ -35,7 +35,7 @@ $routes = array(
         $mainPageController->index();
     },
     "/email" => function () use ($mainPageController) {
-        $mainPageController->getEmail();
+        $mainPageController->postEmail();
     },
     "/users" => function () use ($usersTableController) {
         $usersTableController->index();

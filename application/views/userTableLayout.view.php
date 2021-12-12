@@ -28,9 +28,9 @@
     <table>
         <?php
         echo
-        "<tr><th><a href='?search=$search&order=Id&sort=$sort&?domain=$domain'>Id</th>
-         <th><a href='?search=$search&order=email&sort=$sort&?domain=$domain'>Email</a></th>
-         <th><a href='?search=$search&order=time&sort=$sort&?domain=$domain'>Time</a></th>
+        "<tr><th><a href='?search=$search&domain=$domain&order=Id&sort=$sort'>Id</th>
+         <th><a href='?search=$search&domain=$domain&order=email&sort=$sort'>Email</a></th>
+         <th><a href='?search=$search&domain=$domain&order=time&sort=$sort'>Time</a></th>
          <th>Delete</th></tr>";
         foreach ($emails as $key => $data) {
             echo

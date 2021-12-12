@@ -54,14 +54,4 @@ class UsersTableController extends Controller
             echo "No data is selected " . "<a href='/users'>BACK</a>";
         }
     }
-
-
-    private function sortUserEmail()
-    {
-//test
-    }
-
-
-
-
 }

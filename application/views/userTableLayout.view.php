@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+<a href="/home">BACK</a>
 <form method="post" action="../application/controllers/userController.php">
     <input type="email" required name="email">
     <button type="submit">Submit</button>
@@ -38,8 +39,8 @@
                 "</td><td> <a href='/users/delete?Id=$data[Id]'>Delete </a>" . "</tr>";
         }
 
-        foreach ($domains as $key => $value){
-            echo "<a href='?domain=$domains[$key]''>".$domains[$key].'</a>' ."&nbsp;";
+        foreach ($domains as $key => $value) {
+            echo "<a href='?domain=$domains[$key]''>" . $domains[$key] . '</a>' . "&nbsp;";
         }
         ?>
     </table>

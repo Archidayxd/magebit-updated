@@ -1,0 +1,109 @@
+@import "colors";
+
+.social-icons {
+  margin-top: 7%;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    max-width: 250px;
+    margin: 0 auto;
+    a {
+      text-decoration: none;
+      color: $grey-color;
+    }
+    li {
+      border: 2px solid $border-color;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      text-align: center;
+      padding-top: 12px;
+      a i {
+        line-height: 100px;
+      }
+    }
+  }
+  &::before {
+    margin-bottom: 12.6%;
+    content: "";
+    display: flex;
+    border-top: 1px solid $border-color;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .facebook-icon {
+    color: $social-icons;
+    &:hover {
+      background-color: $facebook;
+      border: 2px solid $facebook;
+      transition: 0.2s;
+      box-shadow: $box-shadow;
+      span {
+        color: $full-white;
+      }
+    }
+    &:active {
+      background-color: $facebook-active;
+      border: 2px solid $facebook-active;
+    }
+  }
+
+  .instagram-icon {
+    color: $social-icons;
+    &:hover {
+      background-color: $instagram;
+      border: 2px solid $instagram;
+      transition: 0.2s;
+      box-shadow: $box-shadow;
+      span {
+        color: $full-white;
+      }
+    }
+    &:active {
+      background-color: $instagram-active;
+      border: 2px solid $instagram-active;
+    }
+  }
+
+  .twitter-icon {
+    color: $social-icons;
+    &:hover {
+      background-color: $twitter;
+      border: 2px solid $twitter;
+      transition: 0.2s;
+      box-shadow: $box-shadow;
+      span {
+        color: $full-white;
+      }
+    }
+    &:active {
+      background-color: $twitter-active;
+      border: 2px solid $twitter-active;
+    }
+  }
+
+  .youtube-icon {
+    color: $social-icons;
+    &:hover {
+      background-color: $youtube;
+      border: 2px solid $youtube;
+      transition: 0.2s;
+      box-shadow: $box-shadow;
+      span {
+        color: $full-white;
+      }
+    }
+    &:active {
+      background-color: $youtube-active;
+      border: 2px solid $youtube-active;
+    }
+  }
+}
+
+.phptable {
+  // padding-top: 10%;
+  text-align: center;
+}

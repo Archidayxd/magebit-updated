@@ -1,0 +1,40 @@
+@import "colors";
+body {
+  background-color: $white-color;
+}
+
+.left {
+  width: 680px;
+  height: 100%;
+}
+
+.right img {
+  max-width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.right {
+  background-image: url(/img/bg.jpg);
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex: 1;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding-top: 14.7%;
+}
+
+.terms-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}

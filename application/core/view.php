@@ -10,6 +10,10 @@ abstract class View
         }
         include __DIR__.'/../views/'.$this->getLayoutName();
     }
+
+    public  function showMainPage(){
+        include __DIR__.'/../views/'.$this->getLayoutName();
+    }
 }
 
 

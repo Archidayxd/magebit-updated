@@ -7,7 +7,7 @@
             <button type="submit" name="subscribe" id="subButton" onclick="subButtonTest()">
                 <span class="icon-arrow-right2"></span>
             </button>
-            <div id="error"><span><?php if(!$success === true || !$success===false){echo $success;} echo"&nbsp;" ?></span></div>
+            <div id="error"><span><?php if(!is_bool($success)){echo $success;} echo"&nbsp;" ?></span></div>
             <div class="subscription__terms terms-wrapper">
                 <div class="subscription__checkbox">
                     <label class="subscription__checkbox-label"></label>

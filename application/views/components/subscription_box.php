@@ -2,7 +2,7 @@
     <div class="subscription__title sub-wrapper" id="title"><span>Subscribe to newsletter</span></div>
     <div class="subscription__subtitle sub-wrapper" id="subtitle"><span>Subscribe to our newsletter and get 10% discount on pineapple glasses.</span></div>
     <div class="subscription__input">
-        <form id="form" action="/phpbase/GetData.php" method="POST" class="form">
+        <form id="form" action="/email" method="POST" class="form">
             <input type="email" placeholder="Type your email address here…" name="email" id="email" onkeyup="checkEmail()">
             <button type="submit" name="subscribe" id="subButton" onclick="subButtonTest()">
                 <span class="icon-arrow-right2"></span>

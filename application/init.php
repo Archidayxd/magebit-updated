@@ -12,6 +12,7 @@ require_once __DIR__ . '/classes/dbh.class.php';
 require_once __DIR__ . '/controllers/UsersTableController.cont.php';
 require_once __DIR__ . '/controllers/MainPageController.cont.php';
 
+require_once __DIR__ . '/models/MainPageModel.model.php';
 require_once __DIR__ . '/models/UserTableModel.model.php';
 
 require_once __DIR__ . '/views/usersTableView.view.php';
@@ -23,14 +24,18 @@ $dbh = new Dbh();
 $mainPageView = new MainPageView();
 $usersTableView = new UsersTableView();
 $usersTableModel = new UserTableModel($dbh);
-$mainPageController = new MainPageController($mainPageView);
+$mainPageModel = new MainPageModel($dbh);
+$mainPageController = new MainPageController($mainPageView, $mainPageModel);
 $usersTableController = new UsersTableController($usersTableView, $usersTableModel);
 
 
 
 $routes = array(
-    "/home" => function () use ($mainPageView) {
-        $mainPageView->showMainPage();
+    "/home" => function () use ($mainPageController) {
+        $mainPageController->index();
+    },
+    "/email" => function () use ($mainPageController) {
+        $mainPageController->getEmail();
     },
     "/users" => function () use ($usersTableController) {
         $usersTableController->index();
@@ -51,7 +56,7 @@ function route($routes)
             return;
         }
     }
-    header('Location: /users');
+    header('Location: /home');
 }
 
 route($routes);

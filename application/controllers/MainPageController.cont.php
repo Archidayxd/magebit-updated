@@ -15,6 +15,7 @@ class MainPageController extends Controller
     public function index()
     {
         $data['success'] = false;
+        $data['error'] = "";
         $this->view->render($data);
     }
 

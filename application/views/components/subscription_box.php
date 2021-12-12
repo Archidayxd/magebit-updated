@@ -7,7 +7,7 @@
             <button type="submit" name="subscribe" id="subButton" onclick="subButtonTest()">
                 <span class="icon-arrow-right2"></span>
             </button>
-            <div id="error"><span>Please provide a valid e-mail address</span></div>
+            <div id="error"><span><?php echo $success; echo"&nbsp;" ?></span></div>
             <div class="subscription__terms terms-wrapper">
                 <div class="subscription__checkbox">
                     <label class="subscription__checkbox-label"></label>

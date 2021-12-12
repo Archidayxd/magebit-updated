@@ -5,6 +5,8 @@ let emailCheck = document.getElementById("email");
 let checkBox = document.getElementById("checkBox");
 let subButton = document.getElementById("subButton");
 
+errorElement.style.visibility = "hidden"
+
 window.onload = function() {
     emailCheck.value = "";
     checkBox.checked = false;
@@ -59,5 +61,5 @@ form.addEventListener("submit" , (e) =>{
         form.classList.add("invalid")
         form.classList.remove("valid")
         errorElement.innerText = errorMessages.join("\r\n")
-    } 
+    }
 })

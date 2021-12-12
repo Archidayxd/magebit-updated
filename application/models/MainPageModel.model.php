@@ -8,15 +8,21 @@ class MainPageModel extends Models{
         $this->dbh = $dbh;
     }
     public function addEmailToDb($email){
-        try {
-            $sql = "INSERT INTO `email`(`email`) VALUES ('$email')";
-            $this->dbh->connect()->exec($sql);
-            return true;
-        } catch(PDOException $e) {
-            echo $sql . "<br>" . $e->getMessage();
-            return false;
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            if (!preg_match("/.co\s*$/", $email)) {
+                try {
+                    $sql = "INSERT INTO `email`(`email`) VALUES ('$email')";
+                    $this->dbh->connect()->exec($sql);
+                    return true;
+                } catch (PDOException $e) {
+                    echo $sql . "<br>" . $e->getMessage();
+                    return false;
+                }
+            } else{
+               return "We are not accepting subscriptions from Colombia emails";
+            }
+        } else{
+           return "Please provide a valid e-mail address";
         }
-
-//        $this->connect() = null;
     }
 }

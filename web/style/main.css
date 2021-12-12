@@ -285,7 +285,7 @@ body {
 
 #error {
   color: #c71919;
-  visibility: hidden;
+  /*visibility: hidden;*/
 }
 
 .upper {

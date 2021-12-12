@@ -9,10 +9,6 @@
 </head>
 <body>
 <a href="/home">BACK</a>
-<form method="post" action="../application/controllers/userController.php">
-    <input type="email" required name="email">
-    <button type="submit">Submit</button>
-</form>
 <form method="get">
     <input type="text" name="search" value="<?php
     echo $search;

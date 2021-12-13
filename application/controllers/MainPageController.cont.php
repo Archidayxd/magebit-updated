@@ -2,7 +2,7 @@
 
 class MainPageController extends Controller
 {
-// test
+
     private MainPageView $view;
     private MainPageModel $model;
 

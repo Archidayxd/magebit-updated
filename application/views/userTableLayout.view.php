@@ -24,9 +24,9 @@
     <table>
         <?php
         echo
-        "<tr><th><a href='?search=$search&domain=$domain&order=Id&sort=$sort'>Id</th>
-         <th><a href='?search=$search&domain=$domain&order=email&sort=$sort'>Email</a></th>
-         <th><a href='?search=$search&domain=$domain&order=time&sort=$sort'>Time</a></th>
+        "<tr><th><a href='?page=$page&search=$search&domain=$domain&order=Id&sort=$sort'>Id</th>
+         <th><a href='?page=$page&search=$search&domain=$domain&order=email&sort=$sort'>Email</a></th>
+         <th><a href='?page=$page&search=$search&domain=$domain&order=time&sort=$sort'>Time</a></th>
          <th>Delete</th></tr>";
         foreach ($emails as $key => $data) {
             echo
@@ -43,7 +43,7 @@
     <h3>Pages:</h3>
     <?php
     for ($i=1; $i<=$total; $i++) {
-        echo "<a href='?page=".$i."'";
+        echo "<a href='?page=".$i."'"."search=$search&domain=$domain&order=Id&sort=$sort";
         echo ">".$i."</a> ";
     }
     ?>

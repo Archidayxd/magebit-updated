@@ -15,7 +15,7 @@ class UserTableModel extends Models
 
         $startFrom = ($page - 1) * 10;
 
-        $sql = "SELECT * FROM email WHERE CONCAT(email) LIKE '%$search%' AND CONCAT(email) LIKE '%$domain%' ORDER BY '%$order%' '%$sort%' LIMIT $startFrom, 10";
+        $sql = "SELECT * FROM email WHERE CONCAT(email) LIKE '%$search%' AND CONCAT(email) LIKE '%$domain%' ORDER BY $order $sort LIMIT $startFrom, 10";
         $stmt = $this->dbh->connect()->prepare($sql);
         $stmt->execute([]);
 

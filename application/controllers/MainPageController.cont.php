@@ -23,7 +23,13 @@ class MainPageController extends Controller
     {
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
-            $isEmailAdded = $this->model->addEmailToDb($email);
+            $errorCheck = $this->model->checkForError($email);
+            $isEmailAdded = false;
+            if (!$errorCheck === NULL){
+                $isEmailAdded = $this->model->addEmailToDb($email);
+            } else{
+                $data['error'] = $errorCheck;
+            }
             $data['success'] = $isEmailAdded;
             $this->view->render($data);
         }

@@ -7,9 +7,18 @@ class MainPageModel extends Models{
     public function __construct($dbh){
         $this->dbh = $dbh;
     }
+
+    public function checkForError($email){
+        if (preg_match("/\w+@\w+\.co$/", $email)){
+            return  "We are not accepting subscriptions from Colombia emails";
+        }
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return  "Please provide a valid e-mail address";
+        }
+        return NULL;
+    }
+
     public function addEmailToDb($email){
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-            if (!preg_match("/\w+@\w+\.co$/", $email)) {
                 try {
                     $sql = "INSERT INTO `email`(`email`) VALUES ('$email')";
                     $this->dbh->connect()->exec($sql);
@@ -18,11 +27,5 @@ class MainPageModel extends Models{
                     echo $sql . "<br>" . $e->getMessage();
                     return false;
                 }
-            } else{
-               return "We are not accepting subscriptions from Colombia emails";
-            }
-        } else{
-           return "Please provide a valid e-mail address";
-        }
     }
 }

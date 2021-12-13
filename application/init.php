@@ -56,7 +56,7 @@ function route($routes)
             return;
         }
     }
-//    header('Location: /home');
+    header('Location: /home');
 }
 
 route($routes);

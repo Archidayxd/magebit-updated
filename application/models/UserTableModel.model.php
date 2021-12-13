@@ -5,19 +5,23 @@ class UserTableModel extends Models
 {
     private Dbh $dbh;
 
-    public function __construct($dbh){
-       $this->dbh = $dbh;
-   }
+    public function __construct($dbh)
+    {
+        $this->dbh = $dbh;
+    }
 
-   public function getUsersTableData($sort, $order , $search , $domain):array{
+    public function getUsersTableData($sort, $order, $search, $domain, $page): array
+    {
 
-       $sql = "SELECT * FROM email WHERE CONCAT(email) LIKE '%$search%' AND CONCAT(email) LIKE '%$domain%' ORDER BY $order $sort";
-       $stmt = $this->dbh->connect()->prepare($sql);
-       $stmt->execute([]);
+        $startFrom = ($page - 1) * 10;
 
-       $emails = $stmt->fetchAll();
-      return array('emails' => $emails);
-   }
+        $sql = "SELECT * FROM email WHERE CONCAT(email) LIKE '%$search%' AND CONCAT(email) LIKE '%$domain%' ORDER BY '%$order%' '%$sort%' LIMIT $startFrom, 10";
+        $stmt = $this->dbh->connect()->prepare($sql);
+        $stmt->execute([]);
+
+        $emails = $stmt->fetchAll();
+        return array('emails' => $emails);
+    }
 
     public function deleteEmail($id)
     {
@@ -26,7 +30,8 @@ class UserTableModel extends Models
         $stmt->execute([]);
     }
 
-    public function generateCsv($ids){
+    public function generateCsv($ids)
+    {
         $ids = implode(', ', $ids);
         $sql = "SELECT * FROM email WHERE Id IN ($ids)";
         $stmh = $this->dbh->connect()->prepare($sql);
@@ -37,24 +42,36 @@ class UserTableModel extends Models
             fputcsv($fp, $row);
         }
     }
-    public  function getByDomain(){
+
+    public function getByDomain()
+    {
         $sql = "SELECT email FROM email";
         $stmt = $this->dbh->connect()->prepare($sql);
         $stmt->execute([]);
         $emails = $stmt->fetchAll();
         $domains = [];
 
-        for ($i = 0; $i<count($emails); $i++) {
+        for ($i = 0; $i < count($emails); $i++) {
             $filter = explode('@', $emails[$i]['email']);
-            $domain = '@'.$filter[1];
+            $domain = '@' . $filter[1];
             array_push($domains, $domain);
             $domains[$i] = ucfirst(strtolower($domains[$i]));
         }
 
-        foreach (array_diff_assoc($domains, array_unique($domains)) as $key => $value){
+        foreach (array_diff_assoc($domains, array_unique($domains)) as $key => $value) {
             unset($domains[$key]);
         }
         return $domains;
+    }
+
+    public function pagesCount()
+    {
+        $sql = "SELECT COUNT(Id) AS total FROM email";
+        $stmt = $this->dbh->connect()->prepare($sql);
+        $stmt->execute([]);
+        $emails = $stmt->fetchAll();
+        $emails = $emails['0']['total'];
+        return $totalPages = ceil($emails / 10);
     }
 
 }

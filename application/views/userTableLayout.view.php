@@ -40,6 +40,13 @@
         }
         ?>
     </table>
+    <h3>Pages:</h3>
+    <?php
+    for ($i=1; $i<=$total; $i++) {
+        echo "<a href='?page=".$i."'";
+        echo ">".$i."</a> ";
+    }
+    ?>
 </form>
 </body>
 </html>

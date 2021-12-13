@@ -2,7 +2,7 @@
 
 class MainPageView extends View{
 
-    protected function getLayoutName()
+    protected function getLayoutName(): string
     {
         return 'main.php';
     }

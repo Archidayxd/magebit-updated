@@ -3,7 +3,7 @@
 class UsersTableView extends View
 {
 
-    protected function getLayoutName()
+    protected function getLayoutName(): string
     {
         return 'userTableLayout.view.php';
     }

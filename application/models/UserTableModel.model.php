@@ -71,7 +71,7 @@ class UserTableModel extends Models
         $stmt->execute([]);
         $emails = $stmt->fetchAll();
         $emails = $emails['0']['total'];
-        return $totalPages = ceil($emails / 10);
+        return ceil($emails / 10);
     }
 
 }

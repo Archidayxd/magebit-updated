@@ -25,7 +25,7 @@ class MainPageController extends Controller
             $email = $_POST['email'];
             $errorCheck = $this->model->checkForError($email);
             $isEmailAdded = false;
-            if (!$errorCheck === NULL){
+            if ($errorCheck === NULL){
                 $isEmailAdded = $this->model->addEmailToDb($email);
             } else{
                 $data['error'] = $errorCheck;

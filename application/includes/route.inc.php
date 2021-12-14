@@ -1,6 +1,6 @@
 <?php
 
-// route system / if in url add array path it will run specific methode
+// route system / if in url add array path it will run specific method
 $routes = array(
     "/home" => function () use ($mainPageController) {
         $mainPageController->index();
@@ -28,7 +28,7 @@ function route($routes)
             return;
         }
     }
-    // if path not found in array > route to home
+    // if path not found in array route will redirect to home page
     header('Location: /home');
 }
 

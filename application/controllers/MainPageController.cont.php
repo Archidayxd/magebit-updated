@@ -30,10 +30,10 @@ class MainPageController extends Controller
             // send email to model for error checking
             $errorCheck = $this->model->checkForError($email);
             $isEmailAdded = false;
-            // if in email no error > add email to db
+            // if in email no error it will add email to db
             if ($errorCheck === NULL){
                 $isEmailAdded = $this->model->addEmailToDb($email);
-            // if error persist > copy error message
+            // if error persist in email it will return error message
             } else{
                 $data['error'] = $errorCheck;
             }

@@ -11,7 +11,6 @@ class Dbh
 
     public function connect()
     {
-        // charset set to prevent from mysql injection
         $dsn = 'mysql:host=' . $this->host . ';charset=utf8' . ';dbname=' . $this->dbName;
         try {
             $pdo = new PDO($dsn, $this->user, $this->pass);

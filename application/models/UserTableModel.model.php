@@ -66,7 +66,7 @@ class UserTableModel extends Models
             // make all letter lowercase after first letter make upper
             $domains[$i] = ucfirst(strtolower($domains[$i]));
         }
-        // store in array only unique domains / if duplicate persist > delete it
+        // store in array only unique domains / if duplicate persist it will delete it
         foreach (array_diff_assoc($domains, array_unique($domains)) as $key => $value) {
             unset($domains[$key]);
         }

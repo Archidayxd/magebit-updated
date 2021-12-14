@@ -4,7 +4,7 @@ abstract class View
 {
     protected abstract function getLayoutName();
 
-// extract all data is $data is array
+// extract all data if $data is array
     public function render($data)
     {
         if (is_array($data)) {

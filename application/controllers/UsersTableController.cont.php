@@ -23,7 +23,7 @@ class UsersTableController extends Controller
 
         $sort = "ASC";
 
-        // checks what type of sorting isset
+        // checks what type of sorting is set
         if (isset($_GET["sort"])) {
             $_GET["sort"] == "DESC" ? $sort = "ASC" : $sort = "DESC";
         }
@@ -43,7 +43,7 @@ class UsersTableController extends Controller
 
     public function deleteEmail()
     {
-        // checks if any email need to delete
+        // checks if any email selected to delete
         if (isset($_GET['Id'])) {
             $id = $_GET['Id'];
             // send specific id to model for delete
@@ -58,7 +58,7 @@ class UsersTableController extends Controller
         // if any email is set in checkboxes
         if (isset($_GET['xport'])) {
             $ids = $_GET['xport'];
-            // if isset > send ids of this emails to model
+            // if isset it will send id's of these emails to model
             $this->model->generateCsv($ids);
             // prepare file name for download
             $fileName = "emails_list.csv";

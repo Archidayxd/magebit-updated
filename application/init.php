@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . '/includes/class-autoload.php';
+// include all classes with autoload
+require_once $_SERVER['DOCUMENT_ROOT']. '/application/includes/class-autoload.php';
 
 // setup all connections
 $dbh = new Dbh();
@@ -11,6 +12,7 @@ $mainPageModel = new MainPageModel($dbh);
 $mainPageController = new MainPageController($mainPageView, $mainPageModel);
 $usersTableController = new UsersTableController($usersTableView, $usersTableModel);
 
-require_once __DIR__. '/includes/route.inc.php';
+// require route
+require_once $_SERVER['DOCUMENT_ROOT']. '/application/includes/route.inc.php';
 
 

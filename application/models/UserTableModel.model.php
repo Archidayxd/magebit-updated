@@ -4,6 +4,7 @@
 class UserTableModel extends Models
 {
     private Dbh $dbh;
+
     // get connection to db
     public function __construct($dbh)
     {

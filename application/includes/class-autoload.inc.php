@@ -9,7 +9,7 @@ spl_autoload_register('autoModelLoader');
 
 function autoCoreLoader($className)
 {
-    $coreFolder = $_SERVER['DOCUMENT_ROOT']. "/application/core/";
+    $coreFolder = $_SERVER['DOCUMENT_ROOT'] . "/application/core/";
     $ext = ".php";
     $classPath = $coreFolder . $className . $ext;
 

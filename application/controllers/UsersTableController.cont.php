@@ -19,7 +19,7 @@ class UsersTableController extends Controller
         $search = $_GET['search'] ?? '';
         $order = $_GET["order"] ?? "Id";
         $domain = $_GET["domain"] ?? '';
-        $page  = $_GET["page"] ?? '1';
+        $page = $_GET["page"] ?? '1';
 
         $sort = "ASC";
 
@@ -28,7 +28,7 @@ class UsersTableController extends Controller
             $_GET["sort"] == "DESC" ? $sort = "ASC" : $sort = "DESC";
         }
         // send to model all data to get users from db and display it
-        $data = $this->model->getUsersTableData($sort, $order, $search ,$domain, $page);
+        $data = $this->model->getUsersTableData($sort, $order, $search, $domain, $page);
         $domains = $this->model->getByDomain();
         $totalPages = $this->model->pagesCount();
         $data['total'] = $totalPages;

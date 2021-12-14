@@ -19,10 +19,10 @@
         <div class="subscription-box">
             <div class="subscription-form">
                 <?php
-                if ($success){
-                    require_once ("components/success_box.php");
+                if ($success) {
+                    require_once("components/success_box.php");
                 } else {
-                    require_once ("components/subscription_box.php");
+                    require_once("components/subscription_box.php");
                 }
                 ?>
                 <?php

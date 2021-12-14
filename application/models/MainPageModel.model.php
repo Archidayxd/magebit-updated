@@ -25,6 +25,7 @@ class MainPageModel extends Models
         // return null if no errors
         return NULL;
     }
+
     // add email to db
     public function addEmailToDb($email)
     {

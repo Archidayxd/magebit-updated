@@ -42,9 +42,9 @@
     </table>
     <h3>Pages:</h3>
     <?php
-    for ($i=1; $i<=$total; $i++) {
-        echo "<a href='?page=".$i."'"."search=$search&domain=$domain&order=Id&sort=$sort";
-        echo ">".$i."</a> ";
+    for ($i = 1; $i <= $total; $i++) {
+        echo "<a href='?page=" . $i . "'" . "search=$search&domain=$domain&order=Id&sort=$sort";
+        echo ">" . $i . "</a> ";
     }
     ?>
 </form>

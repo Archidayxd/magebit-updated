@@ -13,6 +13,6 @@ $mainPageController = new MainPageController($mainPageView, $mainPageModel);
 $usersTableController = new UsersTableController($usersTableView, $usersTableModel);
 
 // require route
-require_once $_SERVER['DOCUMENT_ROOT']. '/application/includes/route.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/application/includes/route.inc.php';
 
 

@@ -2,7 +2,7 @@
 
 //require_once 'class-autoload.include.php';
 
-
+// require all files
 require_once __DIR__ . '/core/models.php';
 require_once __DIR__ . '/core/controller.php';
 require_once __DIR__ . '/core/view.php';
@@ -29,7 +29,7 @@ $mainPageController = new MainPageController($mainPageView, $mainPageModel);
 $usersTableController = new UsersTableController($usersTableView, $usersTableModel);
 
 
-
+// route system / if in url add array path it will run specific methode
 $routes = array(
     "/home" => function () use ($mainPageController) {
         $mainPageController->index();
@@ -50,12 +50,14 @@ $routes = array(
 
 function route($routes)
 {
+    // check if path persist in array
     foreach ($routes as $path => $view) {
         if ($path == $_SERVER["PATH_INFO"]) {
             $view();
             return;
         }
     }
+    // if path not found in array > route to home
     header('Location: /home');
 }
 

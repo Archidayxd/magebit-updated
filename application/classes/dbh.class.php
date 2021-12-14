@@ -6,8 +6,11 @@ class Dbh{
     private $pass = "bar";
     private $dbName = "emails";
 
+// connection to db
+
     public function connect()
     {
+        // charset set to prevent from mysql injection
         $dsn = 'mysql:host=' . $this->host .';charset=utf8'. ';dbname=' . $this->dbName;
         try {
             $pdo = new PDO($dsn, $this->user, $this->pass);
@@ -15,7 +18,7 @@ class Dbh{
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             return $pdo;
         } catch (PDOException) {
-            echo "Error appeared in connection";
+            echo "Connection error";
             exit;
         }
     }

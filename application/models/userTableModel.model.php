@@ -5,7 +5,6 @@ class UserTableModel extends Models
 {
     private Dbh $dbh;
 
-    // get connection to db
     public function __construct($dbh)
     {
         $this->dbh = $dbh;
@@ -13,10 +12,8 @@ class UserTableModel extends Models
 
     public function getUsersTableData($sort, $order, $search, $domain, $page): array
     {
-        // start from specific page
         $startFrom = ($page - 1) * 10;
 
-        // main sql query to list all emails
         $sql = "SELECT * FROM email WHERE CONCAT(email) LIKE '%$search%' AND CONCAT(email) LIKE '%$domain%' ORDER BY $order $sort LIMIT $startFrom, 10";
         $stmt = $this->dbh->connect()->prepare($sql);
         $stmt->execute([]);
@@ -40,33 +37,25 @@ class UserTableModel extends Models
         $stmh->execute([]);
         $result = $stmh->fetchAll();
         $fp = fopen('php://output', 'w');
-        // input all selected emails in csv
-        foreach ($result as $i => $row) {
+        foreach ($result as $row) {
             fputcsv($fp, $row);
         }
     }
 
     public function getByDomain()
     {
-        // get all emails
         $sql = "SELECT email FROM email";
         $stmt = $this->dbh->connect()->prepare($sql);
         $stmt->execute([]);
         $emails = $stmt->fetchAll();
-        // creating empty array with domains
         $domains = [];
-        // for each email:
+
         for ($i = 0; $i < count($emails); $i++) {
-            // seperate email name from domain
             $filter = explode('@', $emails[$i]['email']);
-            // add @ symbol
             $domain = '@' . $filter[1];
-            // push domain to domain array
             array_push($domains, $domain);
-            // make all letter lowercase after first letter make upper
             $domains[$i] = ucfirst(strtolower($domains[$i]));
         }
-        // store in array only unique domains / if duplicate persist it will delete it
         foreach (array_diff_assoc($domains, array_unique($domains)) as $key => $value) {
             unset($domains[$key]);
         }
@@ -75,13 +64,11 @@ class UserTableModel extends Models
 
     public function pagesCount()
     {
-        // count how many id's in db
         $sql = "SELECT COUNT(Id) AS total FROM email";
         $stmt = $this->dbh->connect()->prepare($sql);
         $stmt->execute([]);
         $emails = $stmt->fetchAll();
-        $emails = $emails['0']['total'];
-        // count / 10 to show count of pages
+        $emails = $emails[0]['total'];
         return ceil($emails / 10);
     }
 

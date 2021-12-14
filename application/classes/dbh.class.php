@@ -7,7 +7,6 @@ class Dbh
     private $pass = "bar";
     private $dbName = "emails";
 
-// connection to db
 
     public function connect()
     {

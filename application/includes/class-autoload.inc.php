@@ -6,7 +6,6 @@ spl_autoload_register('autoContrLoader');
 spl_autoload_register('autoViewLoader');
 spl_autoload_register('autoModelLoader');
 
-// autoload for core directory
 
 function autoCoreLoader($className)
 {
@@ -21,7 +20,6 @@ function autoCoreLoader($className)
     require_once $classPath;
 }
 
-// autoload for class directory
 
 function autoClassLoader($className)
 {
@@ -36,7 +34,6 @@ function autoClassLoader($className)
     require_once $classPath;
 }
 
-// autoload for model directory
 
 function autoModelLoader($className)
 {
@@ -51,7 +48,6 @@ function autoModelLoader($className)
     require_once $modelPath;
 }
 
-// autoload for view directory
 
 function autoViewLoader($className)
 {
@@ -66,7 +62,6 @@ function autoViewLoader($className)
     require_once $viewPath;
 }
 
-// autoload for controller directory
 
 function autoContrLoader($className)
 {

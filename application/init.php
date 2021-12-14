@@ -1,7 +1,7 @@
 <?php
 
 // include all classes with autoload
-require_once $_SERVER['DOCUMENT_ROOT']. '/application/includes/class-autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/application/includes/class-autoload.inc.php';
 
 // setup all connections
 $dbh = new Dbh();
